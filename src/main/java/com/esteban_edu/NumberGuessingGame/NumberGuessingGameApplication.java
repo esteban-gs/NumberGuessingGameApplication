@@ -71,8 +71,8 @@ public class NumberGuessingGameApplication implements CommandLineRunner {
     /**
      * validates the chosen number against the allowed max and mins
      *
-     * @param maxRange
-     * @return
+     * @param maxRange the max range to validate against
+     * @return true when in range
      */
     private static boolean validateChosenNumber(int maxRange) {
         return maxRange >= NUMBER_MIN_ALLOWED && maxRange <= NUMBER_MAX_ALLOWED;
@@ -144,7 +144,7 @@ public class NumberGuessingGameApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         LOG.info("STARTING NumberGuessingGameApplication");
 
         configs.setGameState(GameState.IN_PROGRESS);
@@ -155,8 +155,6 @@ public class NumberGuessingGameApplication implements CommandLineRunner {
         // player sets game configs
         runConfigPhase();
         runGenerateSecretNumber();
-        // !! TODO REMOVE After testing
-        Utils.log(configs.getSecretNumber(), "secret Number");
         // while loop for user to enter number until secret number is guessed
         GameState playState = runPlayPhase();
         handleWonORLostMessage(
