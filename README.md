@@ -1,4 +1,4 @@
-# Guessing Game (IT211 1OL 16594 Midterm)
+# Guessing Game
 A program that plays a guessing game
 
 ## Features
